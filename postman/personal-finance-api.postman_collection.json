@@ -1,0 +1,40 @@
+{
+  "info": {
+    "name": "Personal Finance API",
+    "_postman_id": "",
+    "description": "Simple collection for demoing the Personal Finance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "List Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/users"
+      }
+    },
+    {
+      "name": "List Finances",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/finances"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ]
+}
