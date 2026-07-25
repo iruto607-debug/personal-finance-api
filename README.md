@@ -1,5 +1,10 @@
 # Personal Finance API — Portfolio Project
 
+[![CI](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/ci.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/ci.yml)
+[![Lint](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/lint.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/lint.yml)
+[![Pages](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/pages.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/pages.yml)
+[![Docker Image](https://github.com/iruto607-debug/personal-finance-api/packages/container/personal-finance-api/badge)](https://github.com/iruto607-debug/personal-finance-api/pkgs/container/personal-finance-api)
+
 An example, production-style backend for tracking simple finance items and users. This repository is packaged as a portfolio-ready project to demonstrate API design, testing, CI/CD, containerization, and deployment artifacts — everything clients expect from a modern backend.
 
 Highlights
@@ -25,10 +30,6 @@ To enable a live API demo on Render and automatic deploys from `main`:
 3. Push to `main`; the `.github/workflows/deploy-render.yml` workflow will trigger and start a deploy.
 
 I'll help you verify the deploy once you add those secrets — tell me when they're set and I'll trigger a run if needed.
-
-![CI](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/ci.yml/badge.svg)
-![Lint](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/lint.yml/badge.svg)
-![Docker Image](https://github.com/iruto607-debug/personal-finance-api/packages/container/personal-finance-api/badge)
 
 Why this project wins clients
 ----------------------------
