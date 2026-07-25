@@ -47,6 +47,8 @@ To enable a live API demo on Render and automatic deploys from `main`:
 
 For a quick deployment summary, see `docs/deploy-status.md`.
 
+For a portfolio-ready project overview, see `docs/portfolio-summary.md`.
+
 I'll help you verify the deploy once you add those secrets — tell me when they're set and I'll trigger a run if needed.
 
 Why this project wins clients
