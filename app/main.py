@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 
 from . import crud, database, models, schemas
@@ -13,6 +14,18 @@ app = FastAPI(
     ),
     version="1.0.0",
 )
+
+
+@app.get("/", response_class=HTMLResponse)
+def root():
+    return HTMLResponse(
+        "<h1>Personal Finance API</h1><p>Welcome! Use <a href='/docs'>/docs</a> for API documentation.</p>"
+    )
+
+
+@app.get("/favicon.ico")
+def favicon():
+    return RedirectResponse(url="/docs/favicon.ico")
 
 
 @app.get("/health")
