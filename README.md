@@ -45,6 +45,8 @@ To enable a live API demo on Render and automatic deploys from `main`:
 2. Add the repository secrets `RENDER_API_KEY` and `RENDER_SERVICE_ID` (Repository → Settings → Secrets → Actions).
 3. Push to `main`; the `.github/workflows/deploy-render.yml` workflow will trigger and start a deploy.
 
+For a quick deployment summary, see `docs/deploy-status.md`.
+
 I'll help you verify the deploy once you add those secrets — tell me when they're set and I'll trigger a run if needed.
 
 Why this project wins clients
