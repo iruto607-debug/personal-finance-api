@@ -16,6 +16,16 @@ Highlights
 - Minimal frontend demo and Kubernetes manifest for deployment
 - Seed script and Postman collection for quick demos
 
+What’s included
+---------------
+| Feature | Description |
+| --- | --- |
+| Live static frontend | GitHub Pages demo from `gh-pages` |
+| Backend API | FastAPI endpoints for health, users, and finances |
+| CI/CD workflows | GitHub Actions for tests, lint, Pages, and deploys |
+| Container support | Dockerfile, Compose, and GHCR image publishing |
+| Deployment docs | Render, Pages, and Kubernetes guidance |
+
 Live demo (GitHub Pages): https://iruto607-debug.github.io/personal-finance-api/
 - Static frontend is published from the `gh-pages` branch.
 - If the page is not immediately live, enable GitHub Pages in repository settings and select the `gh-pages` branch.
