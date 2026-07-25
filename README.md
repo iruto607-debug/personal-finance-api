@@ -3,6 +3,7 @@
 [![CI](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/ci.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/ci.yml)
 [![Lint](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/lint.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/lint.yml)
 [![Pages](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/pages.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/pages.yml)
+[![Render Deploy](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/deploy-render.yml/badge.svg)](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/deploy-render.yml)
 [![Docker Image](https://github.com/iruto607-debug/personal-finance-api/packages/container/personal-finance-api/badge)](https://github.com/iruto607-debug/personal-finance-api/pkgs/container/personal-finance-api)
 
 An example, production-style backend for tracking simple finance items and users. This repository is packaged as a portfolio-ready project to demonstrate API design, testing, CI/CD, containerization, and deployment artifacts — everything clients expect from a modern backend.
@@ -18,6 +19,21 @@ Highlights
 Live demo (GitHub Pages): https://iruto607-debug.github.io/personal-finance-api/
 - Static frontend is published from the `gh-pages` branch.
 - If the page is not immediately live, enable GitHub Pages in repository settings and select the `gh-pages` branch.
+
+Live backend API (Render)
+-------------------------
+- This repository is configured for a Render Docker deploy using the `deploy-render.yml` workflow.
+- Add GitHub secrets `RENDER_API_KEY` and `RENDER_SERVICE_ID` to enable the action.
+- Once configured, push to `main` and the workflow will trigger a new Render deploy.
+
+Example backend health-check commands once your Render service is live:
+
+```bash
+curl https://<your-render-service>.onrender.com/health
+curl https://<your-render-service>.onrender.com/users
+curl https://<your-render-service>.onrender.com/finances
+```
+
 GHCR image: ghcr.io/iruto607-debug/personal-finance-api:latest (published by workflow)
 
 Render deploy
