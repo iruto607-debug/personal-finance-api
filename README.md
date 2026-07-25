@@ -10,6 +10,13 @@ Highlights
 - Minimal frontend demo and Kubernetes manifest for deployment
 - Seed script and Postman collection for quick demos
 
+Badges
+------
+
+![CI](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/actions/workflows/ci.yml/badge.svg)
+![Lint](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/actions/workflows/lint.yml/badge.svg)
+![Docker Image](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/packages/container/personal-finance-api/badge)
+
 Why this project wins clients
 ----------------------------
 - Clear README with quick-start and demo instructions
@@ -33,6 +40,17 @@ python -m venv .venv
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 # open http://localhost:8000/docs for API docs
+```
+
+Pre-commit
+---------
+
+Install pre-commit hooks locally before development:
+
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit run --all-files
 ```
 
 3. Seed sample data (creates `finance.db` with example rows)
