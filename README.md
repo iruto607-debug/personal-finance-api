@@ -10,8 +10,19 @@ Highlights
 - Minimal frontend demo and Kubernetes manifest for deployment
 - Seed script and Postman collection for quick demos
 
-Badges
-------
+ Live demo (GitHub Pages): https://iruto607-debug.github.io/personal-finance-api/
+ GHCR image: ghcr.io/iruto607-debug/personal-finance-api:latest (published by workflow)
+
+Render deploy
+-------------
+
+To enable a live API demo on Render and automatic deploys from `main`:
+
+1. Create a Render service (see `docs/render-instructions.md` for detailed steps).
+2. Add the repository secrets `RENDER_API_KEY` and `RENDER_SERVICE_ID` (Repository → Settings → Secrets → Actions).
+3. Push to `main`; the `.github/workflows/deploy-render.yml` workflow will trigger and start a deploy.
+
+I'll help you verify the deploy once you add those secrets — tell me when they're set and I'll trigger a run if needed.
 
 ![CI](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/actions/workflows/ci.yml/badge.svg)
 ![Lint](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/actions/workflows/lint.yml/badge.svg)

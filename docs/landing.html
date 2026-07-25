@@ -5,35 +5,51 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Personal Finance API — Demo</title>
     <style>
-      body { font-family: Inter, Arial, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+      body { font-family: Inter, Arial, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color:#111 }
       header { text-align:center; margin-bottom: 2rem }
-      .hero { background: #f7fafc; padding: 2rem; border-radius: 8px }
-      .screenshots img { max-width: 100%; height: auto; border: 1px solid #eee }
+      .hero { background: #f7fafc; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.04) }
+      .screenshots img, .screenshots svg { max-width: 100%; height: auto; border: 1px solid #eee; border-radius:6px }
       .cta { margin-top: 1rem }
+      .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 1rem }
     </style>
   </head>
   <body>
     <header>
       <h1>Personal Finance API</h1>
-      <p>A demo backend ready for production: APIs, tests, CI, Docker, and deploy workflows.</p>
+      <p>Production-style backend demonstrating APIs, tests, CI/CD, containerization, and deploy pipelines — ready to show clients.</p>
     </header>
 
     <main>
       <section class="hero">
         <h2>Quick demo</h2>
-        <p>Run the backend and open <strong>/docs</strong> to explore the OpenAPI UI. Example endpoints:</p>
+        <p>Start the API and open <strong>/docs</strong> for the interactive OpenAPI UI. Example endpoints:</p>
         <ul>
-          <li><code>/health</code></li>
-          <li><code>/users</code></li>
-          <li><code>/finances</code></li>
+          <li><code>/health</code> — health check</li>
+          <li><code>/users</code> — sample users</li>
+          <li><code>/finances</code> — sample finance items</li>
         </ul>
-        <p class="cta"><a href="/frontend/index.html">Open the static demo</a></p>
+        <p class="cta"><a href="/frontend/index.html">Open the static demo</a> · <a href="/docs/landing.html">Landing page</a></p>
       </section>
 
       <section>
-        <h3>Screenshots</h3>
-        <div class="screenshots">
-          <img src="/screenshots/placeholder-1.png" alt="screenshot-1" />
+        <h3>Visual highlights</h3>
+        <div class="grid screenshots">
+          <div>
+            <h4>API Docs</h4>
+            <img src="/screenshots/placeholder-1.png" alt="OpenAPI docs screenshot" />
+          </div>
+          <div>
+            <h4>Dashboard (demo)</h4>
+            <object type="image/svg+xml" data="/screenshots/placeholder-2.svg">Dashboard preview</object>
+          </div>
+          <div>
+            <h4>Reports</h4>
+            <object type="image/svg+xml" data="/screenshots/placeholder-3.svg">Reports preview</object>
+          </div>
+          <div>
+            <h4>Try it</h4>
+            <p>Use the Postman collection in the repository to call the API endpoints immediately.</p>
+          </div>
         </div>
       </section>
     </main>
