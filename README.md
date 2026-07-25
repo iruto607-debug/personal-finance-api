@@ -90,6 +90,7 @@ Demo & Deliverables
 
 Contact
 -------
-If you'd like to hire me to build or extend this project, email: hello@example.com — or open an issue / PR on GitHub.
+If you'd like to hire me to build or extend this project, email: iruto607@gmail.com — or open an issue / PR on GitHub.
+
 
 
