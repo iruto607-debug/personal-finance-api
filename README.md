@@ -11,6 +11,8 @@ Highlights
 - Seed script and Postman collection for quick demos
 
 Live demo (GitHub Pages): https://iruto607-debug.github.io/personal-finance-api/
+- Static frontend is published from the `gh-pages` branch.
+- If the page is not immediately live, enable GitHub Pages in repository settings and select the `gh-pages` branch.
 GHCR image: ghcr.io/iruto607-debug/personal-finance-api:latest (published by workflow)
 
 Render deploy
