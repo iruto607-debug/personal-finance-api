@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personal-finance-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: personal-finance-api
+  template:
+    metadata:
+      labels:
+        app: personal-finance-api
+    spec:
+      containers:
+        - name: api
+          image: personal-finance-api:latest
+          ports:
+            - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: personal-finance-api
+spec:
+  selector:
+    app: personal-finance-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
