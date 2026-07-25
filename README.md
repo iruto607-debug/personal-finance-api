@@ -10,8 +10,8 @@ Highlights
 - Minimal frontend demo and Kubernetes manifest for deployment
 - Seed script and Postman collection for quick demos
 
- Live demo (GitHub Pages): https://iruto607-debug.github.io/personal-finance-api/
- GHCR image: ghcr.io/iruto607-debug/personal-finance-api:latest (published by workflow)
+Live demo (GitHub Pages): https://iruto607-debug.github.io/personal-finance-api/
+GHCR image: ghcr.io/iruto607-debug/personal-finance-api:latest (published by workflow)
 
 Render deploy
 -------------
@@ -24,9 +24,9 @@ To enable a live API demo on Render and automatic deploys from `main`:
 
 I'll help you verify the deploy once you add those secrets — tell me when they're set and I'll trigger a run if needed.
 
-![CI](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/actions/workflows/ci.yml/badge.svg)
-![Lint](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/actions/workflows/lint.yml/badge.svg)
-![Docker Image](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/packages/container/personal-finance-api/badge)
+![CI](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/ci.yml/badge.svg)
+![Lint](https://github.com/iruto607-debug/personal-finance-api/actions/workflows/lint.yml/badge.svg)
+![Docker Image](https://github.com/iruto607-debug/personal-finance-api/packages/container/personal-finance-api/badge)
 
 Why this project wins clients
 ----------------------------
@@ -59,7 +59,7 @@ Pre-commit
 Install pre-commit hooks locally before development:
 
 ```bash
-pip install pre-commit
+pip install -r requirements-dev.txt
 pre-commit install
 pre-commit run --all-files
 ```

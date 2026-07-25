@@ -1,26 +1,27 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Column, Float, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 
-DATABASE_URL = "sqlite:///./finance.db"
-
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False}
-)
-
-SessionLocal = sessionmaker(
-    autoflush=False,
-    autocommit=False,
-    bind=engine
-)
-
-Base = declarative_base()
+from .database import Base
 
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False, index=True)
+
+    finances = relationship(
+        "Finance", back_populates="user", cascade="all, delete-orphan"
+    )
+
+
+class Finance(Base):
+    __tablename__ = "finances"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    amount = Column(Float, nullable=False)
+    description = Column(String, nullable=True)
+
+    user = relationship("User", back_populates="finances")

@@ -1,11 +1,11 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
 from datetime import datetime
 
-from database import db, Transaction
-from auth import register_user, login_user
-from analytics import financial_summary, expense_breakdown
+import pandas as pd
+import plotly.express as px
+import streamlit as st
+from analytics import expense_breakdown
+from auth import login_user, register_user
+from database import Transaction, db
 from insights import financial_health_score, spending_alert
 
 st.set_page_config(page_title="Startup Finance App", layout="wide")
@@ -46,14 +46,11 @@ else:
     st.sidebar.success(f"Logged in as {user}")
 
     menu = st.sidebar.radio(
-        "Menu",
-        ["Dashboard", "Add Transaction", "Analytics"]
+        "Menu", ["Dashboard", "Add Transaction", "Analytics"]
     )
 
-    df = pd.read_sql(
-        f"SELECT * FROM transactions WHERE username='{user}'",
-        db.bind
-    )
+    query = "SELECT * FROM transactions " f"WHERE username='{user}'"
+    df = pd.read_sql(query, db.bind)
 
     # ---------------- DASHBOARD (INVESTOR VERSION) ----------------
     if menu == "Dashboard":
@@ -93,7 +90,7 @@ else:
             df.groupby("type")["amount"].sum().reset_index(),
             x="type",
             y="amount",
-            title="Revenue vs Expenses"
+            title="Revenue vs Expenses",
         )
 
         st.plotly_chart(fig, use_container_width=True)
@@ -109,13 +106,15 @@ else:
 
         if st.button("Save"):
 
-            db.add(Transaction(
-                username=user,
-                date=str(datetime.now()),
-                type=t_type,
-                category=category,
-                amount=amount
-            ))
+            db.add(
+                Transaction(
+                    username=user,
+                    date=str(datetime.now()),
+                    type=t_type,
+                    category=category,
+                    amount=amount,
+                )
+            )
             db.commit()
 
             st.success("Saved successfully")
@@ -135,7 +134,7 @@ else:
             df[df["type"] == "Expense"],
             names="category",
             values="amount",
-            title="Expense Breakdown"
+            title="Expense Breakdown",
         )
 
         st.plotly_chart(fig1, use_container_width=True)
@@ -147,7 +146,7 @@ else:
             breakdown,
             x="category",
             y="amount",
-            title="Spending by Category"
+            title="Spending by Category",
         )
 
         st.plotly_chart(fig2, use_container_width=True)

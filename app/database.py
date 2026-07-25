@@ -1,21 +1,28 @@
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# SQLite database URL
-DATABASE_URL = "sqlite:///./finance.db"
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[1] / ".env")
 
-# Create the database engine
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./finance.db")
+
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}
+    connect_args={"check_same_thread": False},
+    future=True,
 )
 
-# Create a session factory
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
-)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Base class for all database models
 Base = declarative_base()
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

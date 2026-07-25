@@ -1,19 +1,18 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
 
-app = FastAPI(title="Personal Finance API")
+from . import crud, database, models, schemas
 
+models.Base.metadata.create_all(bind=database.engine)
 
-class User(BaseModel):
-    id: int
-    name: str
-
-
-class FinanceItem(BaseModel):
-    id: int
-    user_id: int
-    amount: float
-    description: str | None = None
+app = FastAPI(
+    title="Personal Finance API",
+    description=(
+        "A portfolio-ready example API for tracking users "
+        "and finance items."
+    ),
+    version="1.0.0",
+)
 
 
 @app.get("/health")
@@ -21,14 +20,48 @@ def health():
     return {"status": "ok"}
 
 
-@app.get("/users")
-def list_users():
-    return [User(id=1, name="Alice"), User(id=2, name="Bob")]
+@app.get("/users", response_model=list[schemas.UserResponse])
+def read_users(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(database.get_db),
+):
+    return crud.get_users(db, skip=skip, limit=limit)
 
 
-@app.get("/finances")
-def list_finances():
-    return [
-        FinanceItem(id=1, user_id=1, amount=1200.0, description="Salary"),
-        FinanceItem(id=2, user_id=1, amount=-50.0, description="Groceries"),
-    ]
+@app.post("/users", response_model=schemas.UserResponse, status_code=201)
+def create_user(
+    user: schemas.UserCreate, db: Session = Depends(database.get_db)
+):
+    if crud.get_user_by_email(db, user.email):
+        raise HTTPException(
+            status_code=400, detail="User email already exists"
+        )
+    return crud.create_user(db, user)
+
+
+@app.get("/users/{user_id}", response_model=schemas.UserResponse)
+def read_user(user_id: int, db: Session = Depends(database.get_db)):
+    user = crud.get_user(db, user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+
+@app.get("/finances", response_model=list[schemas.FinanceResponse])
+def read_finances(
+    user_id: int | None = None,
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(database.get_db),
+):
+    return crud.get_finances(db, user_id=user_id, skip=skip, limit=limit)
+
+
+@app.post("/finances", response_model=schemas.FinanceResponse, status_code=201)
+def create_finance(
+    finance: schemas.FinanceCreate, db: Session = Depends(database.get_db)
+):
+    if not crud.get_user(db, finance.user_id):
+        raise HTTPException(status_code=404, detail="User not found")
+    return crud.create_finance(db, finance)

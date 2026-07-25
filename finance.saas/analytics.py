@@ -1,5 +1,3 @@
-import pandas as pd
-
 def financial_summary(df):
 
     income = df[df["type"] == "Income"]["amount"].sum()
@@ -9,4 +7,6 @@ def financial_summary(df):
 
 
 def expense_breakdown(df):
-    return df[df["type"] == "Expense"].groupby("category")["amount"].sum().reset_index()
+    expenses = df[df["type"] == "Expense"]
+    breakdown = expenses.groupby("category")["amount"].sum()
+    return breakdown.reset_index()

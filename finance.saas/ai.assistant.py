@@ -23,7 +23,10 @@ def ai_financial_advisor(income, expense, df):
 
     # Category insight
     if not df.empty:
-        top_category = df[df["type"] == "Expense"].groupby("category")["amount"].sum().idxmax()
+        expense_by_category = (
+            df[df["type"] == "Expense"].groupby("category")["amount"].sum()
+        )
+        top_category = expense_by_category.idxmax()
         insights.append(f"📊 Highest spending category: {top_category}")
 
     return "\n".join(insights)

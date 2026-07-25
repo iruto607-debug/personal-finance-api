@@ -1,5 +1,5 @@
 import streamlit as st
-from database import db, User, Transaction
+from database import Transaction, User, db
 
 st.set_page_config(page_title="Investor Dashboard")
 
